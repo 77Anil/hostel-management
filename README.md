@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Project Setup
+
+#### How to Setup the project and packages are used.
+
+- Redux toolkit
+- Material UI (MUI)
+- SASS (css preprocessor)
+- Axios
+- Typescript
+- env-cmd
+- Jest
+- react testing library
+- react router dom
