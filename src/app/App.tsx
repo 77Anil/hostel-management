@@ -1,15 +1,24 @@
+import React from "react";
 import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../components/home";
 import { store } from "../feature/store";
-import "./App.css";
+import "./App.scss";
 
-function App() {
+export default function App(): JSX.Element {
   return (
     <Provider store={store}>
-      <h1>Sourav</h1>
-      <Home />
+      <Router />
     </Provider>
   );
 }
 
-export default App;
+function Router(): React.ReactElement {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
