@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "../components/home";
 import { store } from "../feature/store";
 import "./App.scss";
+
+// Add lazy imports below. In future we will manage in different file.
+const Home = lazy(() => import("../components/home"));
 
 export default function App(): JSX.Element {
   return (
@@ -16,9 +18,17 @@ export default function App(): JSX.Element {
 function Router(): React.ReactElement {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
+}
+
+// !TODO CREATE LOADER WITH BETTER UI
+
+function Loader(): React.ReactElement {
+  return <div>Loading...</div>;
 }
