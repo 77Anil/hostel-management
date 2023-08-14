@@ -1,6 +1,8 @@
+import { Skeleton } from "@mui/material";
 import React, { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "../components/login";
 import { store } from "../feature/store";
 import "./App.scss";
 
@@ -18,11 +20,25 @@ export default function App(): JSX.Element {
 function Router(): React.ReactElement {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Home />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
@@ -30,5 +46,5 @@ function Router(): React.ReactElement {
 // !TODO CREATE LOADER WITH BETTER UI
 
 function Loader(): React.ReactElement {
-  return <div>Loading...</div>;
+  return <Skeleton variant="rectangular" width={210} height={118} />;
 }
