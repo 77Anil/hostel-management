@@ -32,7 +32,7 @@ export default function Login(): React.ReactElement {
             display: "flex",
             flexDirection: "column",
             gap: 3,
-            width: "50%",
+            width: mobileView ? "80%" : "50%",
           }}
         >
           <Box gap={1}>
