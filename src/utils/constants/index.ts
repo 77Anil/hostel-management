@@ -1,1 +1,3 @@
-export { default } from "./strings";
+import STRING from "./strings";
+
+export { STRING };

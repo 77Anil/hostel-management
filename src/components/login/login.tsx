@@ -9,7 +9,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import STRING from "../../utils/constants";
+import { STRING } from "../../utils/constants";
+
 import RInput from "../input";
 
 export default function Login(): React.ReactElement {
