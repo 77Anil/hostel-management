@@ -2,7 +2,7 @@ import { ThemeProvider } from "@mui/material";
 import React, { lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../components/login";
+import Login from "../pages/login";
 import { store } from "../feature/store";
 import MainLayout from "../pages/mainLayout";
 import SignUp from "../pages/signUp";

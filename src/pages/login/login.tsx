@@ -10,8 +10,9 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { STRING } from "../../utils/constants";
+import ROUTES from "../../utils/constants/routes";
 
-import RInput from "../input";
+import RInput from "../../components/input";
 
 export default function Login(): React.ReactElement {
   const theme: Theme = useTheme();
@@ -43,7 +44,7 @@ export default function Login(): React.ReactElement {
             <Stack direction="row" gap={0.5}>
               <Typography variant="body2">{STRING.doNotHaveAccount}</Typography>
 
-              <Link to={"/"}>
+              <Link to={ROUTES.signUp}>
                 <Typography
                   variant="body2"
                   fontWeight="bold"
@@ -55,8 +56,8 @@ export default function Login(): React.ReactElement {
               </Link>
             </Stack>
           </Box>
-          <RInput label={STRING.email} required />
-          <RInput label={STRING.password} required />
+          <RInput label={STRING.email} />
+          <RInput label={STRING.password} />
           <Button
             variant="contained"
             size="large"
