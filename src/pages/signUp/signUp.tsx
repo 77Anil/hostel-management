@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { STRING } from "../../utils/constants";
+import { ERR_MESSAGE, STRING } from "../../utils/constants";
 import ROUTES from "../../utils/constants/routes";
 
 import RInput from "../../components/input";
@@ -25,7 +25,6 @@ export default function SignUp(): React.ReactElement {
     formState: { errors },
   } = useForm<formValues>();
 
-  console.error(errors);
   const onSubmit: SubmitHandler<formValues> = (data) => {
     console.log(data);
   };
@@ -80,18 +79,27 @@ export default function SignUp(): React.ReactElement {
               <RInput
                 label={STRING.name}
                 {...register("name", {
-                  required: { value: true, message: "This field is required" },
-                  minLength: { value: 4, message: "length should be 4" },
+                  required: {
+                    value: true,
+                    message: ERR_MESSAGE.signUp.emptyField,
+                  },
+                  minLength: {
+                    value: 2,
+                    message: ERR_MESSAGE.signUp.nameLength,
+                  },
                 })}
                 error={{ isError: errors.name, message: errors.name?.message }}
               />
               <RInput
                 label={STRING.email}
                 {...register("Email", {
-                  required: { value: true, message: "This field is required" },
+                  required: {
+                    value: true,
+                    message: ERR_MESSAGE.signUp.emptyField,
+                  },
                   pattern: {
                     value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
-                    message: "email should be valid",
+                    message: ERR_MESSAGE.signUp.vaildEmail,
                   },
                 })}
                 error={{
@@ -99,10 +107,39 @@ export default function SignUp(): React.ReactElement {
                   message: errors.Email?.message,
                 }}
               />
-              <RInput label={STRING.password} {...register("Password")} />
+              <RInput
+                label={STRING.password}
+                {...register("Password", {
+                  required: {
+                    value: true,
+                    message: ERR_MESSAGE.signUp.emptyField,
+                  },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/i,
+                    message: ERR_MESSAGE.signUp.validPassword,
+                  },
+                })}
+                error={{
+                  isError: errors.Password,
+                  message: errors.Password?.message,
+                }}
+              />
               <RInput
                 label={STRING.confirmPassword}
-                {...register("confirmPassword")}
+                {...register("confirmPassword", {
+                  required: {
+                    value: true,
+                    message: ERR_MESSAGE.signUp.emptyField,
+                  },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/i,
+                    message: ERR_MESSAGE.signUp.validPassword,
+                  },
+                })}
+                error={{
+                  isError: errors.confirmPassword,
+                  message: errors.confirmPassword?.message,
+                }}
               />
             </Box>
 

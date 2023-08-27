@@ -58,3 +58,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - Jest
 - react testing library
 - react router dom
+- react hooks form
