@@ -25,8 +25,8 @@ jobs:
       - name: Get Organization Name of Parent Repository
         id: org_name
         run: |
-          PARENT_REPO_URL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/parent" | jq -r '.html_url')
-          ORG_NAME=$(basename "$(dirname "$PARENT_REPO_URL")")
+          PARENT_REPO_URL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/forks" | jq -r '.[0].full_name')
+          ORG_NAME=$(echo "$PARENT_REPO_URL" | cut -d'/' -f1)
           echo "Organization Name: $ORG_NAME"
         shell: bash
 
