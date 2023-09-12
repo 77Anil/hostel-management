@@ -39,4 +39,6 @@ jobs:
           echo "::set-output name=main_org_name::$MAIN_ORG"
 
       - name: Display Main Organization Name
-        run: echo "Main Organization Name: ${{ steps.get_org_name.outputs.main_org_name }}"
+        id: test-abc
+        run: |
+          echo "Main Organization Name: ${{ steps.get_org_name.outputs.main_org_name }}"
