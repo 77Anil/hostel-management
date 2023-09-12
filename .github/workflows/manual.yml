@@ -36,9 +36,9 @@ jobs:
           # Get the main organization name from the user's profile
           MAIN_ORG=$(curl -s "https://api.github.com/users/$OWNER" | jq -r '.company')
 
-          echo "::set-output name=main_org_name::$MAIN_ORG"
+          echo "MAIN_ORG_NAME=$MAIN_ORG" >> $GITHUB_ENV
 
       - name: Display Main Organization Name
         id: test-abc
         run: |
-          echo "Main Organization Name: ${{ steps.get_org_name.outputs.main_org_name }}"
+          echo "Main Organization Name: $MAIN_ORG_NAME"
