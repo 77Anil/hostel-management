@@ -24,6 +24,7 @@ jobs:
     steps:
       - name: Get Repository Name
         run: |
-          REPO_NAME="${{ github.repository }}"
+          REPO_FULL_NAME="${{ github.repository }}"
+          REPO_NAME=$(basename "$REPO_FULL_NAME")
           echo "Repository Name: $REPO_NAME"
 
